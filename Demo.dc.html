@@ -1,0 +1,943 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <style>
+    :root {
+      --bg: #FFF7ED; --surface: #FFFFFF; --ink: #241B3A; --ink-soft: #9186AC;
+      --violet: #7C4DFF; --violet-deep: #5A22D6; --violet-pale: #F1EAFF;
+      --coral: #FF5C7A; --coral-deep: #E23C5C; --coral-pale: #FFE4EA;
+      --gold: #FFB020; --gold-deep: #E08E00; --gold-pale: #FFF1D2;
+      --green: #2FBE84; --green-deep: #1E9C68; --green-pale: #DCF7EA; --line: #EDE4FF; --lock: #D9D2E8;
+      --code-bg: #2B2140;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ink); }
+    .screen { width: 390px; height: 844px; background: var(--bg); border-radius: 40px; border: 1px solid rgba(36,27,58,0.08); overflow: hidden; position: relative; display: flex; flex-direction: column; }
+    .col { display:flex; flex-direction:column; }
+    .row { display:flex; align-items:center; }
+    .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    button { font-family: inherit; cursor: pointer; }
+    .opt-btn { width:100%; text-align:left; border-radius:16px; padding:14px 16px; font-size:13.5px; line-height:1.5; font-weight:600; transition: background 0.15s, border-color 0.15s; }
+    .chunky { border:none; border-radius:999px; font-family:'Fredoka',sans-serif; font-weight:600; }
+    .topbar { flex:none; padding: 22px 20px 12px; display:flex; align-items:center; justify-content:space-between; }
+    .stat-pill { display:flex; align-items:center; gap:5px; background:var(--surface); border-radius:999px; padding:6px 12px; box-shadow: 0 2px 0 var(--line); }
+    .navbar { flex:none; display:flex; align-items:center; justify-content:space-around; padding: 12px 12px 20px; background:var(--surface); border-top:1px solid var(--line); }
+    .nav-icon { all:unset; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:4px; }
+  </style>
+</helmet>
+
+<div class="screen">
+
+  <!-- ===================== TOP BAR (all main tabs) ===================== -->
+  <sc-if value="{{showTopBar}}" hint-placeholder-val="{{true}}">
+  <div class="topbar">
+    <svg width="30" height="30" viewBox="0 0 200 200" fill="none"><path d="M100 30C58 30 40 66 40 100c0 40 27 62 60 62s60-22 60-62c0-34-18-70-60-70Z" fill="var(--violet)"/><ellipse cx="72" cy="100" rx="9" ry="11" fill="#fff"/><ellipse cx="128" cy="100" rx="9" ry="11" fill="#fff"/></svg>
+    <div style="display:flex; gap:8px;">
+      <div class="stat-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2c3 3.5 5 6.6 5 9.5A5 5 0 0 1 7 11.5C7 8.6 9 5.5 12 2Z" fill="var(--gold)"/></svg>
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; color:var(--gold-deep);">{{streakDisplay}}</span>
+      </div>
+      <div class="stat-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 9l9 13 9-13-9-7Z" fill="var(--violet)"/></svg>
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; color:var(--violet);">{{gemsDisplay}}</span>
+      </div>
+      <div class="stat-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 20.5S3.5 14.9 3.5 8.8C3.5 5.6 6 3.5 8.7 3.5c1.6 0 3.1.8 3.3 2 0.2-1.2 1.7-2 3.3-2C18 3.5 20.5 5.6 20.5 8.8c0 6.1-8.5 11.7-8.5 11.7Z" fill="var(--coral)"/></svg>
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; color:var(--coral-deep);">{{hearts}}</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===================== LEARN / PATH ===================== -->
+  <sc-if value="{{showPath}}" hint-placeholder-val="{{true}}">
+  <div style="flex:1; overflow-y:auto; min-height:0; position:relative;">
+
+    <div style="position:relative; margin: 4px 20px 0;">
+      <div style="background: var(--violet); border-radius:20px; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; box-shadow: 0 4px 0 var(--violet-deep);">
+        <div>
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.1em; color:#D8C6FF;">UNIT 1</div>
+          <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:17px; color:#fff; margin-top:2px;">Your First Vibe</div>
+        </div>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="#fff" stroke-width="2"/><path d="M9 9h6M9 13h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <sc-if value="{{unitComplete}}" hint-placeholder-val="{{false}}">
+        <div style="position:absolute; top:-10px; right:-8px; background:var(--gold); color:#4A2E00; font-size:10.5px; font-weight:800; letter-spacing:0.04em; padding:5px 11px; border-radius:999px; box-shadow:0 2px 0 var(--gold-deep); display:flex; align-items:center; gap:4px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#4A2E00" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          UNIT COMPLETE
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="position:relative; margin-top: 26px; height: 600px;">
+      <svg width="390" height="600" style="position:absolute; top:0; left:0;" viewBox="0 0 390 600" fill="none">
+        <polyline points="195,32 130,132 195,232 260,332 195,432 130,532" stroke="var(--line)" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 16"/>
+      </svg>
+
+      <button onClick="{{tapDone1}}" style="all:unset; cursor:pointer; position:absolute; left:171px; top:8px; width:48px; height:48px; border-radius:50%; background:var(--gold); box-shadow:0 5px 0 var(--gold-deep); display:flex; align-items:center; justify-content:center;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <button onClick="{{tapDone2}}" style="all:unset; cursor:pointer; position:absolute; left:106px; top:108px; width:48px; height:48px; border-radius:50%; background:var(--gold); box-shadow:0 5px 0 var(--gold-deep); display:flex; align-items:center; justify-content:center;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <!-- node 3: lesson 1 -->
+      <sc-if value="{{lesson1Done}}" hint-placeholder-val="{{false}}">
+        <button onClick="{{openLesson1}}" style="all:unset; cursor:pointer; position:absolute; left:171px; top:196px; width:48px; height:48px; border-radius:50%; background:var(--gold); box-shadow:0 5px 0 var(--gold-deep); display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </sc-if>
+      <sc-if value="{{lesson1NotDone}}" hint-placeholder-val="{{true}}">
+        <button onClick="{{openLesson1}}" style="all:unset; position:absolute; left:159px; top:196px; width:72px; height:72px; cursor:pointer;">
+          <div style="position:absolute; inset:0; border-radius:50%; border:3px dashed var(--violet); opacity:0.5;"></div>
+          <div style="position:absolute; inset:8px; border-radius:50%; background:var(--violet); box-shadow:0 6px 0 var(--violet-deep); display:flex; align-items:center; justify-content:center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 9l9 13 9-13-9-7Z" fill="#fff"/></svg>
+          </div>
+          <div style="position:absolute; left:50%; top:100%; transform:translateX(-50%); margin-top:10px; background:#fff; border-radius:999px; padding:5px 16px; font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; color:var(--violet); box-shadow:0 3px 0 var(--line); white-space:nowrap;">START</div>
+        </button>
+      </sc-if>
+      <div style="position:absolute; left:236px; top:196px; width:90px; font-size:9.5px; font-weight:700; color:var(--violet-deep);">Ship a waitlist page</div>
+
+      <div style="position:absolute; left:296px; top:150px; width:84px; text-align:center;">
+        <svg width="60" height="60" viewBox="0 0 200 200" fill="none" style="margin:0 auto; display:block;">
+          <path d="M100 22C48 22 26 66 26 108c0 50 34 76 74 76s74-26 74-76C174 66 152 22 100 22Z" fill="#fff" stroke="var(--line)" stroke-width="2"/>
+          <circle cx="55" cy="146" r="10" fill="var(--coral-pale)"/><circle cx="145" cy="146" r="10" fill="var(--coral-pale)"/>
+          <path d="M38 96C38 48 162 48 162 96" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
+          <rect x="21" y="86" width="28" height="42" rx="14" fill="var(--coral)"/><rect x="151" y="86" width="28" height="42" rx="14" fill="var(--coral)"/>
+          <ellipse cx="74" cy="112" rx="16" ry="20" fill="var(--ink)"/><ellipse cx="126" cy="112" rx="16" ry="20" fill="var(--ink)"/>
+          <circle cx="79" cy="106" r="5" fill="#fff"/><circle cx="131" cy="106" r="5" fill="#fff"/>
+          <path d="M80 148c8 9 32 9 40 0" stroke="var(--ink)" stroke-width="6" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div style="margin-top:6px; background:var(--ink); color:#fff; font-size:11px; font-weight:600; padding:6px 4px; border-radius:12px; white-space:nowrap;">{{mascotLine}}</div>
+      </div>
+
+      <!-- node 4: lesson 2 -->
+      <sc-if value="{{lesson2Done}}" hint-placeholder-val="{{false}}">
+        <button onClick="{{openLesson2}}" style="all:unset; cursor:pointer; position:absolute; left:236px; top:308px; width:48px; height:48px; border-radius:50%; background:var(--gold); box-shadow:0 5px 0 var(--gold-deep); display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </sc-if>
+      <sc-if value="{{lesson2Unlocked}}" hint-placeholder-val="{{false}}">
+        <button onClick="{{openLesson2}}" style="all:unset; cursor:pointer; position:absolute; left:224px; top:296px; width:72px; height:72px;">
+          <div style="position:absolute; inset:0; border-radius:50%; border:3px dashed var(--violet); opacity:0.5;"></div>
+          <div style="position:absolute; inset:8px; border-radius:50%; background:var(--violet); box-shadow:0 6px 0 var(--violet-deep); display:flex; align-items:center; justify-content:center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 9l9 13 9-13-9-7Z" fill="#fff"/></svg>
+          </div>
+        </button>
+        <div style="position:absolute; left:196px; top:376px; width:90px; font-size:9.5px; font-weight:700; color:var(--violet-deep);">Make it look real</div>
+      </sc-if>
+      <sc-if value="{{lesson2Locked}}" hint-placeholder-val="{{true}}">
+        <button onClick="{{tapLocked4}}" style="all:unset; cursor:pointer; position:absolute; left:236px; top:308px; width:48px; height:48px; border-radius:50%; background:var(--lock); box-shadow:0 5px 0 #C4BBDA; display:flex; align-items:center; justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#fff" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#fff" stroke-width="2"/></svg>
+        </button>
+      </sc-if>
+
+      <!-- node 5: lesson 3 -->
+      <sc-if value="{{lesson3Done}}" hint-placeholder-val="{{false}}">
+        <button onClick="{{openLesson3}}" style="all:unset; cursor:pointer; position:absolute; left:171px; top:408px; width:48px; height:48px; border-radius:50%; background:var(--gold); box-shadow:0 5px 0 var(--gold-deep); display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </sc-if>
+      <sc-if value="{{lesson3Unlocked}}" hint-placeholder-val="{{false}}">
+        <button onClick="{{openLesson3}}" style="all:unset; cursor:pointer; position:absolute; left:159px; top:396px; width:72px; height:72px;">
+          <div style="position:absolute; inset:0; border-radius:50%; border:3px dashed var(--violet); opacity:0.5;"></div>
+          <div style="position:absolute; inset:8px; border-radius:50%; background:var(--violet); box-shadow:0 6px 0 var(--violet-deep); display:flex; align-items:center; justify-content:center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 9l9 13 9-13-9-7Z" fill="#fff"/></svg>
+          </div>
+        </button>
+        <div style="position:absolute; left:236px; top:408px; width:90px; font-size:9.5px; font-weight:700; color:var(--violet-deep);">Wire it up</div>
+      </sc-if>
+      <sc-if value="{{lesson3Locked}}" hint-placeholder-val="{{true}}">
+        <button onClick="{{tapLocked5}}" style="all:unset; cursor:pointer; position:absolute; left:171px; top:408px; width:48px; height:48px; border-radius:50%; background:var(--lock); box-shadow:0 5px 0 #C4BBDA; display:flex; align-items:center; justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#fff" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="#fff" stroke-width="2"/></svg>
+        </button>
+      </sc-if>
+
+      <!-- node 6: reward chest -->
+      <sc-if value="{{chestClaimed}}" hint-placeholder-val="{{false}}">
+        <button onClick="{{tapChestClaimed}}" style="all:unset; cursor:pointer; position:absolute; left:106px; top:508px; width:48px; height:48px; border-radius:16px; background:var(--gold); box-shadow:0 5px 0 var(--gold-deep); display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </sc-if>
+      <sc-if value="{{chestReady}}" hint-placeholder-val="{{false}}">
+        <button onClick="{{claimChest}}" style="all:unset; cursor:pointer; position:absolute; left:94px; top:496px; width:72px; height:72px;">
+          <div style="position:absolute; inset:0; border-radius:22px; border:3px dashed var(--gold); opacity:0.6;"></div>
+          <div style="position:absolute; inset:8px; border-radius:16px; background:var(--gold); box-shadow:0 6px 0 var(--gold-deep); display:flex; align-items:center; justify-content:center;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="9" width="16" height="10" rx="2" stroke="#4A2E00" stroke-width="2"/><path d="M4 9h16M12 9v10" stroke="#4A2E00" stroke-width="2"/></svg>
+          </div>
+        </button>
+        <div style="position:absolute; left:36px; top:562px; width:80px; text-align:center; font-size:9.5px; font-weight:800; color:var(--gold-deep);">TAP TO CLAIM</div>
+      </sc-if>
+      <sc-if value="{{chestLocked}}" hint-placeholder-val="{{true}}">
+        <button onClick="{{tapLocked6}}" style="all:unset; cursor:pointer; position:absolute; left:106px; top:508px; width:48px; height:48px; border-radius:16px; background:var(--lock); box-shadow:0 5px 0 #C4BBDA; display:flex; align-items:center; justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="9" width="16" height="10" rx="2" stroke="#fff" stroke-width="2"/><path d="M4 9h16M12 9v10" stroke="#fff" stroke-width="2"/></svg>
+        </button>
+      </sc-if>
+    </div>
+
+    <div style="padding: 4px 20px 22px;">
+      <div style="font-size:11px; font-weight:800; letter-spacing:0.1em; color:var(--ink-soft);">COMING UP</div>
+      <div style="display:flex; gap:8px; margin-top:10px; overflow-x:auto; padding-bottom:4px;">
+        <div style="flex:none; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font-size:12px; font-weight:700; color:var(--ink-soft); white-space:nowrap;">Prompting Like a Pro</div>
+        <div style="flex:none; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font-size:12px; font-weight:700; color:var(--ink-soft); white-space:nowrap;">Debug With AI</div>
+        <div style="flex:none; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font-size:12px; font-weight:700; color:var(--ink-soft); white-space:nowrap;">Build a Money Tracker</div>
+        <div style="flex:none; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font-size:12px; font-weight:700; color:var(--ink-soft); white-space:nowrap;">Ship an AI Chatbot</div>
+        <div style="flex:none; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font-size:12px; font-weight:700; color:var(--ink-soft); white-space:nowrap;">Automate the Boring Stuff</div>
+      </div>
+    </div>
+
+    <sc-if value="{{toastVisible}}" hint-placeholder-val="{{false}}">
+      <div style="position:sticky; bottom:12px; left:0; display:flex; justify-content:center; pointer-events:none;">
+        <div style="background:var(--ink); color:#fff; font-size:12.5px; font-weight:600; padding:10px 18px; border-radius:999px; box-shadow:0 6px 16px rgba(36,27,58,0.3);">{{toastText}}</div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- ===================== VIBE CHECK TAB ===================== -->
+  <sc-if value="{{showVibeCheckTab}}" hint-placeholder-val="{{false}}">
+  <div class="col" style="flex:1; overflow-y:auto; min-height:0; padding: 6px 24px 0;">
+    <span style="display:inline-block; background:var(--gold-pale); color:var(--gold-deep); font-size:11px; font-weight:800; letter-spacing:0.06em; padding:5px 12px; border-radius:999px; align-self:flex-start;">TODAY'S CHECK</span>
+    <h2 style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:19px; line-height:1.35; margin-top:14px;">This delete button removes a user's data immediately. Would you ship this?</h2>
+    <div class="mono" style="margin-top:16px; background:var(--code-bg); border-radius:16px; padding:16px; font-size:12px; line-height:1.85; color:#D8C6FF;">
+      <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">1</span><span>function deleteAccount(id) {</span></div>
+      <div class="row" style="gap:12px; background:rgba(255,92,122,0.22); border-radius:6px; margin: 0 -6px; padding: 0 6px;"><span style="color:var(--coral); width:10px;">2</span><span style="padding-left:16px;">db.users.remove(id);</span></div>
+      <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">3</span><span style="padding-left:16px;">redirect('/goodbye');</span></div>
+      <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">4</span><span>}</span></div>
+    </div>
+    <div class="row" style="gap:14px; margin-top:16px;">
+      <button onClick="{{pickVcShip}}" style="{{vcShipStyle}} flex:1; height:56px; border-radius:18px;">
+        <div class="col" style="align-items:center; gap:2px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:12.5px;">Ship it</span>
+        </div>
+      </button>
+      <button onClick="{{pickVcFlag}}" style="{{vcFlagStyle}} flex:1; height:56px; border-radius:18px;">
+        <div class="col" style="align-items:center; gap:2px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 3v18M6 4h11l-3 4 3 4H6" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+          <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:12.5px;">Flag it</span>
+        </div>
+      </button>
+    </div>
+    <sc-if value="{{vcAnswered}}" hint-placeholder-val="{{false}}">
+      <div style="margin-top:16px; background:{{vcFeedbackBg}}; border-radius:14px; padding:14px 16px;">
+        <p style="font-size:13px; font-weight:700; color:{{vcFeedbackText}}; line-height:1.5; margin:0;">{{vcExplain}}</p>
+      </div>
+      <p style="font-size:12px; color:var(--ink-soft); margin-top:10px;">New check unlocks tomorrow.</p>
+    </sc-if>
+  </div>
+  <div class="navbar">
+    <button class="nav-icon" onClick="{{tabLearn}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7" stroke="var(--ink-soft)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9h14v-9" stroke="var(--ink-soft)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="nav-icon" onClick="{{tabVibeCheck}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z" stroke="var(--violet)" stroke-width="2.2" stroke-linejoin="round"/></svg><div style="width:5px; height:5px; border-radius:50%; background:var(--violet);"></div></button>
+    <button class="nav-icon" onClick="{{tabLeagues}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 4h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5V4Z" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linejoin="round"/><path d="M7 5H4.5A2.5 2.5 0 0 0 7 9M17 5h2.5A2.5 2.5 0 0 1 17 9" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linecap="round"/><path d="M12 12v3.5M9.5 19.5h5M10 16.5h4v3h-4z" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linejoin="round"/></svg></button>
+    <button class="nav-icon" onClick="{{tabProfile}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="var(--ink-soft)" stroke-width="2.2"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  </div>
+  </sc-if>
+
+  <!-- ===================== LEAGUES TAB ===================== -->
+  <sc-if value="{{showLeaguesTab}}" hint-placeholder-val="{{false}}">
+  <div class="col" style="flex:1; overflow-y:auto; min-height:0; padding: 6px 24px 0;">
+    <div style="background:var(--violet); border-radius:24px; padding:24px; text-align:center; box-shadow:0 5px 0 var(--violet-deep);">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" style="margin:0 auto;"><path d="M12 2c3 3.5 5 6.6 5 9.5A5 5 0 0 1 7 11.5C7 8.6 9 5.5 12 2Z" fill="var(--gold)"/></svg>
+      <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:34px; color:#fff; margin-top:4px;">{{streakDisplay}}</div>
+      <div style="font-size:12px; font-weight:700; color:#D8C6FF; letter-spacing:0.04em;">DAY STREAK</div>
+    </div>
+
+    <div class="row" style="margin: 22px 0 0; justify-content:space-between;">
+      <div class="row" style="gap:10px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z" fill="var(--gold)"/></svg>
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:16px;">Diamond League</span>
+      </div>
+      <span style="font-size:12px; color:var(--ink-soft); font-weight:700;">2 days left</span>
+    </div>
+
+    <div class="col" style="gap:8px; margin-top:12px;">
+      <div class="row" style="gap:12px; background:var(--surface); border-radius:16px; padding:10px 14px; border:1px solid var(--line);">
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; color:var(--ink-soft); width:16px;">1</span>
+        <div style="width:32px; height:32px; border-radius:50%; background:var(--gold-pale); display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-weight:600; font-size:12px; color:var(--gold-deep);">JR</div>
+        <span style="flex:1; font-size:13.5px; font-weight:700;">Jordan</span>
+        <span style="font-size:12.5px; color:var(--ink-soft); font-weight:700;">612 XP</span>
+      </div>
+      <div class="row" style="gap:12px; background:var(--surface); border-radius:16px; padding:10px 14px; border:1px solid var(--line);">
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; color:var(--ink-soft); width:16px;">2</span>
+        <div style="width:32px; height:32px; border-radius:50%; background:var(--coral-pale); display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-weight:600; font-size:12px; color:var(--coral-deep);">PR</div>
+        <span style="flex:1; font-size:13.5px; font-weight:700;">Priya</span>
+        <span style="font-size:12.5px; color:var(--ink-soft); font-weight:700;">588 XP</span>
+      </div>
+      <div class="row" style="gap:12px; background:var(--violet-pale); border-radius:16px; padding:10px 14px; border:2px solid var(--violet);">
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; color:var(--violet); width:16px;">3</span>
+        <div style="width:32px; height:32px; border-radius:50%; background:var(--violet); display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-weight:600; font-size:11px; color:#fff;">YOU</div>
+        <span style="flex:1; font-size:13.5px; font-weight:800; color:var(--violet-deep);">You</span>
+        <span style="font-size:12.5px; color:var(--violet-deep); font-weight:800;">{{youXp}} XP</span>
+      </div>
+      <div class="row" style="gap:12px; background:var(--surface); border-radius:16px; padding:10px 14px; border:1px solid var(--line);">
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:13px; color:var(--ink-soft); width:16px;">4</span>
+        <div style="width:32px; height:32px; border-radius:50%; background:var(--green-pale); display:flex; align-items:center; justify-content:center; font-family:'Fredoka',sans-serif; font-weight:600; font-size:12px; color:var(--green-deep);">SM</div>
+        <span style="flex:1; font-size:13.5px; font-weight:700;">Sam</span>
+        <span style="font-size:12.5px; color:var(--ink-soft); font-weight:700;">501 XP</span>
+      </div>
+    </div>
+
+    <div class="row" style="gap:8px; margin: 16px 0 20px; background:var(--green-pale); border-radius:14px; padding:12px 14px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="var(--green-deep)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="font-size:12px; font-weight:700; color:var(--green-deep);">Top 5 promote to Emerald League</span>
+    </div>
+  </div>
+  <div class="navbar">
+    <button class="nav-icon" onClick="{{tabLearn}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7" stroke="var(--ink-soft)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9h14v-9" stroke="var(--ink-soft)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="nav-icon" onClick="{{tabVibeCheck}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linejoin="round"/></svg></button>
+    <button class="nav-icon" onClick="{{tabLeagues}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 4h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5V4Z" stroke="var(--violet)" stroke-width="2.1" stroke-linejoin="round"/><path d="M7 5H4.5A2.5 2.5 0 0 0 7 9M17 5h2.5A2.5 2.5 0 0 1 17 9" stroke="var(--violet)" stroke-width="2.1" stroke-linecap="round"/><path d="M12 12v3.5M9.5 19.5h5M10 16.5h4v3h-4z" stroke="var(--violet)" stroke-width="2.1" stroke-linejoin="round"/></svg><div style="width:5px; height:5px; border-radius:50%; background:var(--violet);"></div></button>
+    <button class="nav-icon" onClick="{{tabProfile}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="var(--ink-soft)" stroke-width="2.2"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  </div>
+  </sc-if>
+
+  <!-- ===================== PROFILE TAB ===================== -->
+  <sc-if value="{{showProfileTab}}" hint-placeholder-val="{{false}}">
+  <div class="col" style="flex:1; overflow-y:auto; min-height:0; padding: 6px 24px 0;">
+    <div class="row" style="gap:16px;">
+      <svg width="58" height="58" viewBox="0 0 200 200" fill="none" style="flex:none;">
+        <path d="M100 22C48 22 26 66 26 108c0 50 34 76 74 76s74-26 74-76C174 66 152 22 100 22Z" fill="var(--violet)"/>
+        <circle cx="55" cy="146" r="10" fill="#C9A9FF"/><circle cx="145" cy="146" r="10" fill="#C9A9FF"/>
+        <path d="M38 96C38 48 162 48 162 96" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <rect x="21" y="86" width="28" height="42" rx="14" fill="var(--coral)"/><rect x="151" y="86" width="28" height="42" rx="14" fill="var(--coral)"/>
+        <ellipse cx="74" cy="112" rx="16" ry="20" fill="#fff"/><ellipse cx="126" cy="112" rx="16" ry="20" fill="#fff"/>
+        <circle cx="79" cy="108" r="5.5" fill="var(--ink)"/><circle cx="131" cy="108" r="5.5" fill="var(--ink)"/>
+      </svg>
+      <div>
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:19px;">Ren Okafor</div>
+        <div class="row" style="gap:6px; margin-top:4px;">
+          <span style="background:var(--gold-pale); color:var(--gold-deep); font-size:11px; font-weight:800; padding:3px 10px; border-radius:999px;">LEVEL 12</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:18px;">
+      <div style="background:var(--surface); border-radius:16px; padding:12px; text-align:center; border:1px solid var(--line);">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:19px; color:var(--gold-deep);">{{streakDisplay}}</div>
+        <div style="font-size:10.5px; color:var(--ink-soft); font-weight:700; margin-top:2px;">STREAK</div>
+      </div>
+      <div style="background:var(--surface); border-radius:16px; padding:12px; text-align:center; border:1px solid var(--line);">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:19px; color:var(--violet);">{{gemsDisplay}}</div>
+        <div style="font-size:10.5px; color:var(--ink-soft); font-weight:700; margin-top:2px;">TOTAL XP</div>
+      </div>
+      <div style="background:var(--surface); border-radius:16px; padding:12px; text-align:center; border:1px solid var(--line);">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:19px; color:var(--green-deep);">{{appsShippedCount}}</div>
+        <div style="font-size:10.5px; color:var(--ink-soft); font-weight:700; margin-top:2px;">SHIPPED</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; font-family:'Fredoka',sans-serif; font-weight:600; font-size:15px;">Shipped apps</div>
+    <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:10px; padding-bottom:16px;">
+
+      <sc-if value="{{lesson1Done}}" hint-placeholder-val="{{false}}">
+        <div style="background:var(--surface); border-radius:16px; padding:12px; border:1px solid var(--line);">
+          <div style="width:100%; height:52px; background:var(--violet-pale); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="var(--violet)" stroke-width="2"/><path d="M9 15V9l6 3-6 3Z" fill="var(--violet)"/></svg>
+          </div>
+          <div style="font-size:12.5px; font-weight:700; margin-top:8px;">Waitlist Page</div>
+          <div class="row" style="gap:5px; margin-top:3px;"><span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span><span style="font-size:10.5px; color:var(--ink-soft); font-weight:600;">Live</span></div>
+        </div>
+      </sc-if>
+      <sc-if value="{{lesson2Done}}" hint-placeholder-val="{{false}}">
+        <div style="background:var(--surface); border-radius:16px; padding:12px; border:1px solid var(--line);">
+          <div style="width:100%; height:52px; background:var(--coral-pale); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12c2-5 6-8 8-8s6 3 8 8c-2 5-6 8-8 8s-6-3-8-8Z" stroke="var(--coral-deep)" stroke-width="2"/><circle cx="12" cy="12" r="2.4" fill="var(--coral-deep)"/></svg>
+          </div>
+          <div style="font-size:12.5px; font-weight:700; margin-top:8px;">Landing Page v2</div>
+          <div class="row" style="gap:5px; margin-top:3px;"><span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span><span style="font-size:10.5px; color:var(--ink-soft); font-weight:600;">Live</span></div>
+        </div>
+      </sc-if>
+      <sc-if value="{{lesson3Done}}" hint-placeholder-val="{{false}}">
+        <div style="background:var(--surface); border-radius:16px; padding:12px; border:1px solid var(--line);">
+          <div style="width:100%; height:52px; background:var(--green-pale); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" stroke="var(--green-deep)" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="font-size:12.5px; font-weight:700; margin-top:8px;">Signup Flow</div>
+          <div class="row" style="gap:5px; margin-top:3px;"><span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span><span style="font-size:10.5px; color:var(--ink-soft); font-weight:600;">Live</span></div>
+        </div>
+      </sc-if>
+
+      <div style="background:var(--surface); border-radius:16px; padding:12px; border:1px solid var(--line);">
+        <div style="width:100%; height:52px; background:var(--sky-pale,#E1F4FC); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#3FB6E8" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="#3FB6E8" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="font-size:12.5px; font-weight:700; margin-top:8px;">Weather Widget</div>
+        <div class="row" style="gap:5px; margin-top:3px;"><span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span><span style="font-size:10.5px; color:var(--ink-soft); font-weight:600;">Live</span></div>
+      </div>
+
+      <div style="background:var(--surface); border-radius:16px; padding:12px; border:1.5px dashed var(--line); display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center; color:var(--ink-soft);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="margin:0 auto;"><path d="M12 5v14M5 12h14" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <div style="font-size:10.5px; font-weight:700; margin-top:5px;">Next lesson</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar">
+    <button class="nav-icon" onClick="{{tabLearn}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7" stroke="var(--ink-soft)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9h14v-9" stroke="var(--ink-soft)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="nav-icon" onClick="{{tabVibeCheck}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linejoin="round"/></svg></button>
+    <button class="nav-icon" onClick="{{tabLeagues}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 4h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5V4Z" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linejoin="round"/><path d="M7 5H4.5A2.5 2.5 0 0 0 7 9M17 5h2.5A2.5 2.5 0 0 1 17 9" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linecap="round"/><path d="M12 12v3.5M9.5 19.5h5M10 16.5h4v3h-4z" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linejoin="round"/></svg></button>
+    <button class="nav-icon" onClick="{{tabProfile}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="var(--violet)" stroke-width="2.2"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6" stroke="var(--violet)" stroke-width="2.2" stroke-linecap="round"/></svg><div style="width:5px; height:5px; border-radius:50%; background:var(--violet);"></div></button>
+  </div>
+  </sc-if>
+
+  <!-- ===================== NAV BAR (path tab only; others have their own above) ===================== -->
+  <sc-if value="{{showPathNav}}" hint-placeholder-val="{{true}}">
+  <div class="navbar">
+    <button class="nav-icon" onClick="{{tabLearn}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9h14v-9" stroke="var(--violet)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="width:5px; height:5px; border-radius:50%; background:var(--violet);"></div></button>
+    <button class="nav-icon" onClick="{{tabVibeCheck}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linejoin="round"/></svg></button>
+    <button class="nav-icon" onClick="{{tabLeagues}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 4h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5V4Z" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linejoin="round"/><path d="M7 5H4.5A2.5 2.5 0 0 0 7 9M17 5h2.5A2.5 2.5 0 0 1 17 9" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linecap="round"/><path d="M12 12v3.5M9.5 19.5h5M10 16.5h4v3h-4z" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linejoin="round"/></svg></button>
+    <button class="nav-icon" onClick="{{tabProfile}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="var(--ink-soft)" stroke-width="2.2"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  </div>
+  </sc-if>
+
+  <!-- ===================== LESSON INTRO ===================== -->
+  <sc-if value="{{isIntro}}" hint-placeholder-val="{{false}}">
+  <div class="col" style="flex:1; padding: 24px 28px 32px; justify-content:space-between;">
+    <button onClick="{{onGoPath}}" style="all:unset; cursor:pointer; align-self:flex-start;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="var(--ink-soft)" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+    <div class="col" style="align-items:center; text-align:center; gap:18px;">
+      <svg width="130" height="130" viewBox="0 0 200 200" fill="none">
+        <path d="M100 22C48 22 26 66 26 108c0 50 34 76 74 76s74-26 74-76C174 66 152 22 100 22Z" fill="var(--violet)"/>
+        <circle cx="55" cy="146" r="11" fill="#C9A9FF"/><circle cx="145" cy="146" r="11" fill="#C9A9FF"/>
+        <path d="M38 96C38 48 162 48 162 96" stroke="var(--coral)" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <rect x="21" y="86" width="28" height="46" rx="14" fill="var(--coral)"/><rect x="151" y="86" width="28" height="46" rx="14" fill="var(--coral)"/>
+        <ellipse cx="74" cy="114" rx="17" ry="22" fill="#fff"/><ellipse cx="126" cy="114" rx="17" ry="22" fill="#fff"/>
+        <circle cx="79" cy="108" r="6.5" fill="var(--ink)"/><circle cx="131" cy="108" r="6.5" fill="var(--ink)"/>
+        <path d="M80 152c8 10 32 10 40 0" stroke="var(--ink)" stroke-width="7" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1 style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:24px; margin:0;">{{introTitle}}</h1>
+        <p style="font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin-top:12px; max-width:280px;">{{introSubtitle}}</p>
+      </div>
+    </div>
+    <button class="chunky" onClick="{{onStartExercises}}" style="height:58px; background:var(--gold); color:#4A2E00; font-size:16px; box-shadow:0 5px 0 var(--gold-deep);">I'm ready</button>
+  </div>
+  </sc-if>
+
+  <!-- ===================== EXERCISE ===================== -->
+  <sc-if value="{{isExercise}}" hint-placeholder-val="{{false}}">
+  <div class="col" style="flex:1; min-height:0;">
+    <div class="row" style="flex:none; padding: 24px 20px 14px; gap:14px;">
+      <button onClick="{{onGoPath}}" style="all:unset; cursor:pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6 6 18" stroke="var(--ink-soft)" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+      <div style="flex:1; height:14px; background:var(--line); border-radius:999px; overflow:hidden;">
+        <div style="height:100%; background:var(--green); border-radius:999px; width: {{progressPct}};"></div>
+      </div>
+      <div class="row" style="gap:4px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20.5S3.5 14.9 3.5 8.8C3.5 5.6 6 3.5 8.7 3.5c1.6 0 3.1.8 3.3 2 0.2-1.2 1.7-2 3.3-2C18 3.5 20.5 5.6 20.5 8.8c0 6.1-8.5 11.7-8.5 11.7Z" fill="var(--coral)"/></svg>
+        <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:14px; color:var(--coral-deep);">{{hearts}}</span>
+      </div>
+    </div>
+
+    <div style="flex:1; overflow-y:auto; padding: 6px 24px 0; min-height:0;">
+
+      <sc-if value="{{isMcqStep}}" hint-placeholder-val="{{true}}">
+        <span style="display:inline-block; background:var(--violet-pale); color:var(--violet-deep); font-size:11px; font-weight:800; letter-spacing:0.06em; padding:5px 12px; border-radius:999px;">{{exBadge}}</span>
+        <h2 style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:19px; line-height:1.35; margin-top:14px;">{{exQuestion}}</h2>
+        <div class="col" style="gap:10px; margin-top:18px;">
+          <sc-for list="{{exOptions}}" as="opt" hint-placeholder-count="2">
+            <button class="opt-btn" onClick="{{opt.pick}}" style="{{opt.style}}">{{opt.text}}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isRiskStep}}" hint-placeholder-val="{{false}}">
+        <span style="display:inline-block; background:var(--gold-pale); color:var(--gold-deep); font-size:11px; font-weight:800; letter-spacing:0.06em; padding:5px 12px; border-radius:999px;">{{exBadge}}</span>
+        <h2 style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:19px; line-height:1.35; margin-top:14px;">{{exQuestion}}</h2>
+
+        <sc-if value="{{riskIsCodeKey}}" hint-placeholder-val="{{true}}">
+          <div class="mono" style="margin-top:16px; background:var(--code-bg); border-radius:16px; padding:16px; font-size:12px; line-height:1.85; color:#D8C6FF;">
+            <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">1</span><span>async function subscribe(email) {</span></div>
+            <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">2</span><span style="padding-left:16px;">return fetch(mailchimpUrl, {</span></div>
+            <div class="row" style="gap:12px; background:rgba(255,92,122,0.22); border-radius:6px; margin: 0 -6px; padding: 0 6px;"><span style="color:var(--coral); width:10px;">3</span><span style="padding-left:32px;">key: 'us21-3fa8b9c1',</span></div>
+            <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">4</span><span style="padding-left:32px;">email: email,</span></div>
+            <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">5</span><span style="padding-left:16px;">});</span></div>
+            <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">6</span><span>}</span></div>
+          </div>
+        </sc-if>
+        <sc-if value="{{riskIsCodeSql}}" hint-placeholder-val="{{false}}">
+          <div class="mono" style="margin-top:16px; background:var(--code-bg); border-radius:16px; padding:16px; font-size:12px; line-height:1.85; color:#D8C6FF;">
+            <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">1</span><span>app.post('/join', (req, res) => {</span></div>
+            <div class="row" style="gap:12px; background:rgba(255,92,122,0.22); border-radius:6px; margin: 0 -6px; padding: 0 6px;"><span style="color:var(--coral); width:10px;">2</span><span style="padding-left:16px;">const q = "INSERT INTO emails</span></div>
+            <div class="row" style="gap:12px; background:rgba(255,92,122,0.22); border-radius:6px; margin: 0 -6px; padding: 0 6px;"><span style="color:var(--coral); width:10px;"> </span><span style="padding-left:32px;">VALUES ('" + req.body.email + "')";</span></div>
+            <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">3</span><span style="padding-left:16px;">db.query(q);</span></div>
+            <div class="row" style="gap:12px;"><span style="color:#9384B8; width:10px;">4</span><span>});</span></div>
+          </div>
+        </sc-if>
+        <sc-if value="{{riskIsPreview}}" hint-placeholder-val="{{false}}">
+          <div style="margin-top:16px; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px 20px;">
+            <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:17px; color:#E3DCEE;">Join the waitlist</div>
+            <div style="margin-top:10px; height:38px; border-radius:10px; background:#F4F0FA; border:1px solid var(--line);"></div>
+            <div style="margin-top:10px; height:36px; width:120px; border-radius:999px; background:var(--gold);"></div>
+          </div>
+          <p style="font-size:11.5px; color:var(--ink-soft); margin-top:8px;">Headline text shown above at its actual rendered contrast.</p>
+        </sc-if>
+
+        <div class="row" style="gap:14px; margin-top:16px;">
+          <button onClick="{{pickShip}}" style="{{shipStyle}} flex:1; height:56px; border-radius:18px;">
+            <div class="col" style="align-items:center; gap:2px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:12.5px;">Ship it</span>
+            </div>
+          </button>
+          <button onClick="{{pickFlag}}" style="{{flagStyle}} flex:1; height:56px; border-radius:18px;">
+            <div class="col" style="align-items:center; gap:2px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 3v18M6 4h11l-3 4 3 4H6" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+              <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:12.5px;">Flag it</span>
+            </div>
+          </button>
+        </div>
+      </sc-if>
+
+    </div>
+
+    <sc-if value="{{answered}}" hint-placeholder-val="{{false}}">
+      <div class="col" style="flex:none; padding: 16px 24px 24px; background: {{feedbackBg}};">
+        <p style="font-size:13.5px; font-weight:700; color: {{feedbackText}}; line-height:1.5; margin:0 0 12px;">{{exExplain}}</p>
+        <sc-if value="{{showRefill}}" hint-placeholder-val="{{false}}">
+          <button class="chunky" onClick="{{onRefill}}" style="height:44px; background:var(--gold); color:#4A2E00; font-size:13.5px; margin-bottom:10px;">Watch an ad to refill hearts</button>
+        </sc-if>
+        <button class="chunky" onClick="{{onContinue}}" style="height:54px; background: {{feedbackBtn}}; color:#fff; font-size:15px;">Continue</button>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- ===================== COMPLETE ===================== -->
+  <sc-if value="{{isComplete}}" hint-placeholder-val="{{false}}">
+  <div class="col" style="flex:1; padding: 40px 28px 32px; justify-content:space-between; align-items:center; text-align:center;">
+    <div class="col" style="align-items:center; gap:16px;">
+      <div style="position:relative; width:160px; height:130px; display:flex; align-items:center; justify-content:center;">
+        <div style="position:absolute; left:6px; top:10px; width:10px; height:10px; border-radius:3px; background:var(--gold); transform:rotate(18deg);"></div>
+        <div style="position:absolute; right:8px; top:4px; width:8px; height:8px; border-radius:50%; background:var(--coral);"></div>
+        <div style="position:absolute; left:14px; bottom:14px; width:8px; height:8px; border-radius:50%; background:var(--green);"></div>
+        <div style="position:absolute; right:2px; bottom:22px; width:10px; height:10px; border-radius:3px; background:var(--violet-pale); transform:rotate(-12deg);"></div>
+        <div style="position:absolute; left:44px; top:-2px; width:7px; height:7px; border-radius:50%; background:var(--gold);"></div>
+        <div style="position:absolute; right:40px; bottom:2px; width:9px; height:9px; border-radius:2px; background:var(--coral-pale); transform:rotate(30deg);"></div>
+        <svg width="120" height="120" viewBox="0 0 200 200" fill="none">
+          <path d="M100 22C48 22 26 66 26 108c0 50 34 76 74 76s74-26 74-76C174 66 152 22 100 22Z" fill="var(--violet)"/>
+          <circle cx="55" cy="146" r="11" fill="#C9A9FF"/><circle cx="145" cy="146" r="11" fill="#C9A9FF"/>
+          <path d="M38 96C38 48 162 48 162 96" stroke="var(--coral)" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <rect x="21" y="86" width="28" height="46" rx="14" fill="var(--coral)"/><rect x="151" y="86" width="28" height="46" rx="14" fill="var(--coral)"/>
+          <path d="M62 108c4-8 11-13 12-13s8 5 12 13" stroke="var(--ink)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M102 108c4-8 11-13 12-13s8 5 12 13" stroke="var(--ink)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M78 150c6 12 36 12 42 0" stroke="var(--ink)" stroke-width="7" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h1 style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:26px; margin:0;">{{completeTitle}}</h1>
+      <p style="font-size:14px; color:var(--ink-soft); margin:0;">{{completeSubtitle}}</p>
+    </div>
+
+    <div style="width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px;">
+      <div style="background:var(--surface); border-radius:16px; padding:14px; border:1px solid var(--line);">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:20px; color:var(--gold-deep);">+{{xpEarned}}</div>
+        <div style="font-size:11px; color:var(--ink-soft); font-weight:700; margin-top:2px;">XP EARNED</div>
+      </div>
+      <div style="background:var(--surface); border-radius:16px; padding:14px; border:1px solid var(--line);">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:20px; color:var(--coral-deep);">{{hearts}}</div>
+        <div style="font-size:11px; color:var(--ink-soft); font-weight:700; margin-top:2px;">HEARTS LEFT</div>
+      </div>
+      <div style="background:var(--surface); border-radius:16px; padding:14px; border:1px solid var(--line);">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:20px; color:var(--violet);">{{streakDisplay}}</div>
+        <div style="font-size:11px; color:var(--ink-soft); font-weight:700; margin-top:2px;">DAY STREAK</div>
+      </div>
+    </div>
+
+    <button class="chunky" onClick="{{onFinish}}" style="width:100%; height:58px; background:var(--gold); color:#4A2E00; font-size:16px; box-shadow:0 5px 0 var(--gold-deep);">Continue</button>
+  </div>
+  </sc-if>
+
+</div>
+
+<script data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mainTab: 'learn',
+      learnScreen: 'path',
+      activeLessonId: null,
+      exerciseIndex: 0,
+      selected: null,
+      answered: false,
+      hearts: 5,
+      correctCount: 0,
+      lesson1Done: false,
+      lesson2Done: false,
+      lesson3Done: false,
+      chestClaimed: false,
+      totalXp: 0,
+      streakBumped: false,
+      toast: null,
+      vcAnswered: false,
+      vcSelected: null,
+    };
+  }
+
+  getLessons() {
+    return {
+      1: {
+        introTitle: "Ready to ship a waitlist page?",
+        introSubtitle: "3 quick checks: writing a sharp prompt, spotting risky code, and iterating like a pro.",
+        shipName: "a waitlist page",
+        exercises: [
+          {
+            badge: 'PROMPT QUALITY',
+            question: "You're building a landing page for PawPal, a dog-walking app. Which prompt gets you further?",
+            options: [
+              { id: 'a', text: '"Make me an app."', correct: false },
+              { id: 'b', text: '"Build a landing page for PawPal: a headline about stress-free dog walking, an email signup form, and warm orange tones."', correct: true },
+            ],
+            correctMsg: "Nice — specific beats vague every time.",
+            wrongMsg: "Specific beats vague — name the product, the goal, and the vibe.",
+          },
+          {
+            badge: 'VIBE CHECK', isRisk: true, riskVariant: 'code-key', correctAnswer: 'flag',
+            question: "The AI wired up your signup form. Would you ship this?",
+            correctMsg: "Good catch — that's a live API key sitting in code anyone can view.",
+            wrongMsg: "That's a live API key sitting in code anyone can view. Worth flagging.",
+          },
+          {
+            badge: 'ITERATING',
+            question: 'The AI’s first headline says "Welcome to our website." What’s the best next prompt?',
+            options: [
+              { id: 'a', text: '"no"', correct: false },
+              { id: 'b', text: '"try again"', correct: false },
+              { id: 'c', text: '"Make the headline about PawPal — mention stress-free dog walking, speak to busy pet owners."', correct: true },
+            ],
+            correctMsg: "Exactly — tell the AI what's wrong and what you want instead.",
+            wrongMsg: "Vague feedback gets vague fixes. Tell the AI exactly what's wrong and what you want instead.",
+          },
+        ],
+      },
+      2: {
+        introTitle: "Ready to make it look real?",
+        introSubtitle: "3 quick checks: fixing default styling, spotting a UI risk, and asking for the right space.",
+        shipName: "the landing page redesign",
+        exercises: [
+          {
+            badge: 'DESIGN SENSE',
+            question: "Your signup button renders default browser blue on white. What's the fastest fix?",
+            options: [
+              { id: 'a', text: '"Make it look professional."', correct: false },
+              { id: 'b', text: '"Make the button PawPal’s brand orange, with rounded corners and bigger padding so it feels tappable."', correct: true },
+            ],
+            correctMsg: "Nice — a concrete color and shape beats \"professional\" every time.",
+            wrongMsg: "\"Professional\" means nothing to an AI. Name the color, shape, and size you want.",
+          },
+          {
+            badge: 'VIBE CHECK', isRisk: true, riskVariant: 'preview', correctAnswer: 'flag',
+            question: "The AI styled your headline. Would you ship this?",
+            correctMsg: "Good eye — light gray on white barely clears any contrast check.",
+            wrongMsg: "That headline is nearly invisible against the background — worth flagging.",
+          },
+          {
+            badge: 'ITERATING',
+            question: "The page feels cramped — everything's jammed together. What's the best next prompt?",
+            options: [
+              { id: 'a', text: '"make it bigger"', correct: false },
+              { id: 'b', text: '"add some space"', correct: false },
+              { id: 'c', text: '"Add breathing room: bump the padding around the form to 24px and add margin between the headline and the signup box."', correct: true },
+            ],
+            correctMsg: "That's it — exact numbers give the AI something to act on.",
+            wrongMsg: '"More space" is vague. Give the AI a number and where it goes.',
+          },
+        ],
+      },
+      3: {
+        introTitle: "Ready to make it actually work?",
+        introSubtitle: "3 quick checks: connecting real data, spotting a security risk, and asking for both outcomes.",
+        shipName: "a working signup flow",
+        exercises: [
+          {
+            badge: 'DATA & BACKENDS',
+            question: "You want signups to actually get saved somewhere. Which prompt gets you further?",
+            options: [
+              { id: 'a', text: '"Connect it to a database."', correct: false },
+              { id: 'b', text: '"Save each signup email to a Google Sheet using their API, then show a \'You\'re on the list!\' message."', correct: true },
+            ],
+            correctMsg: "Right — name the exact storage and the exact confirmation.",
+            wrongMsg: '"A database" could mean anything. Name the exact tool and what happens after.',
+          },
+          {
+            badge: 'VIBE CHECK', isRisk: true, riskVariant: 'code-sql', correctAnswer: 'flag',
+            question: "The AI wired up the save. Would you ship this?",
+            correctMsg: "Good catch — that email is dropped straight into the query string, wide open to SQL injection.",
+            wrongMsg: "That email is dropped straight into the query string — a classic SQL-injection hole. Worth flagging.",
+          },
+          {
+            badge: 'ITERATING',
+            question: "The form submits but shows nothing back — no success, no error, nothing. What's the best next prompt?",
+            options: [
+              { id: 'a', text: '"Fix it."', correct: false },
+              { id: 'b', text: '"Why doesn\'t it work?"', correct: false },
+              { id: 'c', text: '"After a successful save, show a green \'You\'re on the list!\' banner. If saving fails, show a red error instead."', correct: true },
+            ],
+            correctMsg: "Exactly — cover both outcomes, success and failure.",
+            wrongMsg: "The AI can't guess what \"it\" means. Describe both the success state and the failure state.",
+          },
+        ],
+      },
+    };
+  }
+
+  currentExercise() {
+    const lessons = this.getLessons();
+    const lesson = lessons[this.state.activeLessonId] || lessons[1];
+    return lesson.exercises[this.state.exerciseIndex] || lesson.exercises[0];
+  }
+
+  pick(optionId, correct) {
+    if (this.state.answered) return;
+    this.setState({
+      selected: optionId,
+      answered: true,
+      hearts: correct ? this.state.hearts : Math.max(0, this.state.hearts - 1),
+      correctCount: correct ? this.state.correctCount + 1 : this.state.correctCount,
+    });
+  }
+
+  pickRisk(answer) {
+    if (this.state.answered) return;
+    const ex = this.currentExercise();
+    const correct = answer === ex.correctAnswer;
+    this.setState({
+      selected: answer,
+      answered: true,
+      hearts: correct ? this.state.hearts : Math.max(0, this.state.hearts - 1),
+      correctCount: correct ? this.state.correctCount + 1 : this.state.correctCount,
+    });
+  }
+
+  refillHearts() {
+    this.setState({ hearts: 5 });
+  }
+
+  continueExercise() {
+    const lesson = this.getLessons()[this.state.activeLessonId];
+    const total = lesson.exercises.length;
+    if (this.state.exerciseIndex + 1 < total) {
+      this.setState({ exerciseIndex: this.state.exerciseIndex + 1, selected: null, answered: false });
+    } else {
+      const xpEarned = this.state.correctCount * 10;
+      const patch = {
+        learnScreen: 'complete',
+        totalXp: this.state.totalXp + xpEarned,
+        streakBumped: true,
+      };
+      if (this.state.activeLessonId === 1) patch.lesson1Done = true;
+      if (this.state.activeLessonId === 2) patch.lesson2Done = true;
+      if (this.state.activeLessonId === 3) patch.lesson3Done = true;
+      this.setState(patch);
+    }
+  }
+
+  goPath() {
+    this.setState({ learnScreen: 'path', mainTab: 'learn' });
+  }
+
+  openLesson(id) {
+    this.setState({
+      learnScreen: 'intro', mainTab: 'learn', activeLessonId: id,
+      exerciseIndex: 0, selected: null, answered: false, hearts: 5, correctCount: 0,
+    });
+  }
+
+  startExercises() {
+    this.setState({ learnScreen: 'exercise' });
+  }
+
+  finishLesson() {
+    this.setState({ learnScreen: 'path' });
+  }
+
+  setTab(tab) {
+    this.setState({ mainTab: tab, learnScreen: 'path' });
+  }
+
+  claimChest() {
+    if (!this.state.lesson3Done || this.state.chestClaimed) return;
+    this.setState({ chestClaimed: true, totalXp: this.state.totalXp + 50 });
+    this.showToast('+50 bonus XP — Unit 1 complete!');
+  }
+
+  showToast(msg) {
+    this.setState({ toast: msg });
+    setTimeout(() => {
+      if (this.state.toast === msg) this.setState({ toast: null });
+    }, 1800);
+  }
+
+  pickVc(answer) {
+    if (this.state.vcAnswered) return;
+    this.setState({ vcSelected: answer, vcAnswered: true });
+  }
+
+  optStyle(correct, isSelected, answered) {
+    if (answered) {
+      if (correct) return 'background:var(--green-pale); border:2px solid var(--green); color:var(--ink);';
+      if (isSelected) return 'background:var(--coral-pale); border:2px solid var(--coral); color:var(--ink);';
+      return 'background:#fff; border:1px solid var(--line); color:var(--ink-soft); opacity:0.55;';
+    }
+    if (isSelected) return 'background:var(--violet-pale); border:2px solid var(--violet); color:var(--ink);';
+    return 'background:#fff; border:1px solid var(--line); color:var(--ink);';
+  }
+
+  renderVals() {
+    const s = this.state;
+    const lessons = this.getLessons();
+    const ex = this.currentExercise();
+    const answered = s.answered;
+    const sel = s.selected;
+
+    const exOptions = (ex.options || []).map(o => ({
+      id: o.id,
+      text: o.text,
+      style: this.optStyle(o.correct, sel === o.id, answered),
+      pick: () => this.pick(o.id, o.correct),
+    }));
+
+    const neutralBtn = 'background:#fff; border:1px solid var(--line); color:var(--ink-soft);';
+    let shipStyle = neutralBtn, flagStyle = neutralBtn;
+    if (answered && ex.isRisk) {
+      const shipCorrect = ex.correctAnswer === 'ship';
+      const flagCorrect = ex.correctAnswer === 'flag';
+      shipStyle = shipCorrect ? 'background:var(--green-pale); border:2px solid var(--green); color:var(--green-deep);'
+        : (sel === 'ship' ? 'background:var(--coral-pale); border:2px solid var(--coral); color:var(--coral-deep);' : 'background:#fff; border:1px solid var(--line); color:var(--ink-soft); opacity:0.55;');
+      flagStyle = flagCorrect ? 'background:var(--green-pale); border:2px solid var(--green); color:var(--green-deep);'
+        : (sel === 'flag' ? 'background:var(--coral-pale); border:2px solid var(--coral); color:var(--coral-deep);' : 'background:#fff; border:1px solid var(--line); color:var(--ink-soft); opacity:0.55;');
+    }
+
+    let wasCorrect = false;
+    let exExplain = '';
+    if (answered) {
+      if (ex.isRisk) { wasCorrect = sel === ex.correctAnswer; }
+      else { const picked = (ex.options || []).find(o => o.id === sel); wasCorrect = !!(picked && picked.correct); }
+      exExplain = wasCorrect ? ex.correctMsg : ex.wrongMsg;
+    }
+
+    const lesson = lessons[s.activeLessonId] || lessons[1];
+    const total = lesson.exercises.length;
+    const progressPct = Math.min(100, Math.round(((s.exerciseIndex + (answered ? 1 : 0)) / total) * 100)) + '%';
+
+    // vibe check tab
+    const vcCorrectAnswer = 'flag';
+    let vcShipStyle = neutralBtn, vcFlagStyle = neutralBtn, vcExplain = '';
+    if (s.vcAnswered) {
+      const vcCorrect = s.vcSelected === vcCorrectAnswer;
+      vcShipStyle = vcCorrectAnswer === 'ship' ? 'background:var(--green-pale); border:2px solid var(--green); color:var(--green-deep);'
+        : (s.vcSelected === 'ship' ? 'background:var(--coral-pale); border:2px solid var(--coral); color:var(--coral-deep);' : 'background:#fff; border:1px solid var(--line); color:var(--ink-soft); opacity:0.55;');
+      vcFlagStyle = vcCorrectAnswer === 'flag' ? 'background:var(--green-pale); border:2px solid var(--green); color:var(--green-deep);'
+        : (s.vcSelected === 'flag' ? 'background:var(--coral-pale); border:2px solid var(--coral); color:var(--coral-deep);' : 'background:#fff; border:1px solid var(--line); color:var(--ink-soft); opacity:0.55;');
+      vcExplain = vcCorrect ? "Good instinct — destructive actions need a confirmation step first." : "Deleting instantly with no confirmation is risky — that one deserved a flag.";
+    }
+
+    const streakDisplay = 14 + (s.streakBumped ? 1 : 0);
+    const gemsDisplay = 860 + s.totalXp;
+    const youXp = 540 + s.totalXp;
+    const appsShippedCount = 7 + (s.lesson1Done ? 1 : 0) + (s.lesson2Done ? 1 : 0) + (s.lesson3Done ? 1 : 0);
+
+    const inLessonFlow = s.mainTab === 'learn' && (s.learnScreen === 'intro' || s.learnScreen === 'exercise' || s.learnScreen === 'complete');
+
+    return {
+      showTopBar: !inLessonFlow,
+      showPath: s.mainTab === 'learn' && s.learnScreen === 'path',
+      showPathNav: s.mainTab === 'learn' && s.learnScreen === 'path',
+      showVibeCheckTab: s.mainTab === 'vibecheck',
+      showLeaguesTab: s.mainTab === 'leagues',
+      showProfileTab: s.mainTab === 'profile',
+      isIntro: s.mainTab === 'learn' && s.learnScreen === 'intro',
+      isExercise: s.mainTab === 'learn' && s.learnScreen === 'exercise',
+      isComplete: s.mainTab === 'learn' && s.learnScreen === 'complete',
+
+      hearts: s.hearts,
+      streakDisplay,
+      gemsDisplay,
+      youXp,
+      appsShippedCount,
+
+      lesson1Done: s.lesson1Done,
+      lesson1NotDone: !s.lesson1Done,
+      lesson2Done: s.lesson2Done,
+      lesson2Unlocked: s.lesson1Done && !s.lesson2Done,
+      lesson2Locked: !s.lesson1Done,
+      lesson3Done: s.lesson3Done,
+      lesson3Unlocked: s.lesson2Done && !s.lesson3Done,
+      lesson3Locked: !s.lesson2Done,
+      chestClaimed: s.chestClaimed,
+      chestReady: s.lesson3Done && !s.chestClaimed,
+      chestLocked: !s.lesson3Done,
+      unitComplete: s.chestClaimed,
+      mascotLine: s.lesson2Done ? "Last one — let's finish strong!" : (s.lesson1Done ? "On to the next one!" : "Let's ship it!"),
+
+      openLesson1: () => this.openLesson(1),
+      openLesson2: () => this.openLesson(2),
+      openLesson3: () => this.openLesson(3),
+      tapDone1: () => this.showToast('Already crushed this one 💪'),
+      tapDone2: () => this.showToast('Already crushed this one 💪'),
+      tapLocked4: () => this.showToast('Finish "Ship a waitlist page" first'),
+      tapLocked5: () => this.showToast('Finish "Make it look real" first'),
+      tapLocked6: () => this.showToast('Finish Unit 1 to unlock the reward chest'),
+      tapChestClaimed: () => this.showToast('Already claimed — nice work!'),
+      claimChest: () => this.claimChest(),
+      toastVisible: !!s.toast,
+      toastText: s.toast || '',
+
+      tabLearn: () => this.setTab('learn'),
+      tabVibeCheck: () => this.setTab('vibecheck'),
+      tabLeagues: () => this.setTab('leagues'),
+      tabProfile: () => this.setTab('profile'),
+
+      introTitle: lesson.introTitle,
+      introSubtitle: lesson.introSubtitle,
+      onStartExercises: () => this.startExercises(),
+      onGoPath: () => this.goPath(),
+
+      isMcqStep: !ex.isRisk,
+      isRiskStep: !!ex.isRisk,
+      riskIsCodeKey: ex.riskVariant === 'code-key',
+      riskIsCodeSql: ex.riskVariant === 'code-sql',
+      riskIsPreview: ex.riskVariant === 'preview',
+      exBadge: ex.badge,
+      exQuestion: ex.question,
+      exOptions,
+      shipStyle, flagStyle,
+      pickShip: () => this.pickRisk('ship'),
+      pickFlag: () => this.pickRisk('flag'),
+      answered,
+      exExplain,
+      feedbackBg: answered ? (wasCorrect ? 'var(--green-pale)' : 'var(--coral-pale)') : 'transparent',
+      feedbackText: answered ? (wasCorrect ? 'var(--green-deep)' : 'var(--coral-deep)') : 'var(--ink)',
+      feedbackBtn: answered ? (wasCorrect ? 'var(--green)' : 'var(--coral)') : 'var(--violet)',
+      showRefill: answered && s.hearts === 0,
+      onRefill: () => this.refillHearts(),
+      progressPct,
+      onContinue: () => this.continueExercise(),
+
+      completeTitle: s.activeLessonId === 3 ? "Unit complete!" : "Lesson complete!",
+      completeSubtitle: "You shipped " + lesson.shipName + " — sort of.",
+      xpEarned: s.correctCount * 10,
+      onFinish: () => this.finishLesson(),
+
+      vcAnswered: s.vcAnswered,
+      vcShipStyle, vcFlagStyle, vcExplain,
+      pickVcShip: () => this.pickVc('ship'),
+      pickVcFlag: () => this.pickVc('flag'),
+    };
+  }
+}
+</script>
+</x-dc>
+</body>
+</html>

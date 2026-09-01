@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <style>
+    :root {
+      --bg: #FFF7ED;
+      --surface: #FFFFFF;
+      --ink: #241B3A;
+      --ink-soft: #7A7093;
+      --violet: #7C4DFF;
+      --violet-deep: #5A22D6;
+      --violet-pale: #F1EAFF;
+      --coral: #FF5C7A;
+      --coral-deep: #E23C5C;
+      --coral-pale: #FFE4EA;
+      --gold: #FFB020;
+      --gold-deep: #E08E00;
+      --gold-pale: #FFF1D2;
+      --green: #2FBE84;
+      --green-pale: #DCF7EA;
+      --line: #EBE2FF;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Plus Jakarta Sans", system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+    a { color: var(--violet); text-decoration: none; } a:hover { color: var(--violet-deep); }
+    h1, h2, h3 { font-family: "Fredoka", system-ui, sans-serif; margin: 0; font-weight: 600; letter-spacing: -0.01em; }
+    p { margin: 0; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 40px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: "Plus Jakarta Sans", sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+    .btn-chunky { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 56px; padding: 0 30px; border-radius: 999px; font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 17px; border: none; box-shadow: 0 5px 0 var(--gold-deep); }
+  </style>
+</helmet>
+
+<!-- HERO -->
+<section style="position: relative; overflow: hidden; background: var(--violet); padding: 96px 0 120px;">
+  <div style="position:absolute; top:-90px; right:-70px; width:320px; height:320px; border-radius:50%; background: var(--violet-deep); opacity:0.55;"></div>
+  <div style="position:absolute; bottom:-140px; left:-100px; width:360px; height:360px; border-radius:50%; background: var(--violet-deep); opacity:0.45;"></div>
+  <div style="position:absolute; top:60px; left:8%; width:26px; height:26px; border-radius:8px; background: var(--gold); transform: rotate(18deg); opacity:0.9;"></div>
+  <div style="position:absolute; bottom:120px; right:14%; width:20px; height:20px; border-radius:6px; background: var(--coral); transform: rotate(-12deg); opacity:0.9;"></div>
+
+  <div class="wrap" style="position:relative; display:flex; align-items:center; gap:56px;">
+    <div style="flex: 1 1 520px;">
+      <div class="eyebrow" style="color: var(--gold);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        App pitch
+      </div>
+      <h1 style="font-size: 68px; line-height: 0.98; color: #fff; margin-top: 18px;">Vibolingo</h1>
+      <p style="font-family:'Fredoka',sans-serif; font-weight:500; font-size: 26px; color: var(--gold-pale); margin-top: 14px; line-height:1.3;">Duolingo for the way software gets built now.</p>
+      <p style="font-size: 17px; color: #E4D9FF; margin-top: 16px; max-width: 460px; line-height: 1.6;">Five minutes a day. Real, working apps. No CS degree required — just a habit and a little taste.</p>
+      <div style="margin-top: 32px; display:flex; align-items:center; gap:16px;">
+        <button class="btn-chunky" style="background: var(--gold); color: #4A2E00;">
+          Get early access
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#4A2E00" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span style="color:#C9B9FF; font-size:14px; font-weight:600;">a concept pitch, not yet live</span>
+      </div>
+    </div>
+
+    <div style="flex: 0 0 auto;">
+      <svg width="240" height="240" viewBox="0 0 200 200" fill="none">
+        <ellipse cx="100" cy="182" rx="62" ry="10" fill="#4A22B8" opacity="0.4"/>
+        <path d="M100 22C48 22 26 66 26 108c0 50 34 76 74 76s74-26 74-76C174 66 152 22 100 22Z" fill="#FFFFFF"/>
+        <circle cx="55" cy="146" r="11" fill="var(--coral-pale)"/>
+        <circle cx="145" cy="146" r="11" fill="var(--coral-pale)"/>
+        <path d="M38 96C38 48 162 48 162 96" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <rect x="21" y="86" width="28" height="42" rx="14" fill="var(--coral)"/>
+        <rect x="151" y="86" width="28" height="42" rx="14" fill="var(--coral)"/>
+        <ellipse cx="74" cy="112" rx="17" ry="21" fill="var(--ink)"/>
+        <ellipse cx="126" cy="112" rx="17" ry="21" fill="var(--ink)"/>
+        <circle cx="79" cy="106" r="5.5" fill="#fff"/>
+        <circle cx="131" cy="106" r="5.5" fill="#fff"/>
+        <path d="M80 148c8 10 32 10 40 0" stroke="var(--ink)" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <rect x="16" y="150" width="20" height="30" rx="10" fill="#FFFFFF" transform="rotate(-18 16 150)"/>
+        <rect x="164" y="150" width="20" height="30" rx="10" fill="#FFFFFF" transform="rotate(18 164 150)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="wrap" style="padding: 88px 40px 0;">
+  <div style="display:flex; gap:64px; align-items:flex-start; flex-wrap:wrap;">
+    <div style="flex:1 1 260px;">
+      <div class="eyebrow" style="color: var(--coral-deep);">The problem</div>
+      <h2 style="font-size:36px; margin-top:14px; line-height:1.15;">Everyone can generate code now.<br>Almost no one can direct it.</h2>
+    </div>
+    <div style="flex:1 1 360px; padding-top:6px;">
+      <p style="font-size:17px; line-height:1.7; color:var(--ink-soft);">Millions of people are "vibe coding" — describing an app to an AI and shipping whatever it hands back. Most do it badly: they can't tell good output from bad, don't know how to scope a prompt, and freeze the first time the AI confidently breaks something. Traditional coding courses don't help — they teach syntax, for a world where you typed every line yourself.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHT BAND -->
+<section style="margin-top:72px; background: var(--ink); padding: 56px 0;">
+  <div class="wrap" style="display:flex; align-items:center; gap:28px; flex-wrap:wrap;">
+    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" style="flex:none;"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2.1v.2h6v-.2c0-.9.4-1.6 1-2.1A7 7 0 0 0 12 2Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/></svg>
+    <p style="font-family:'Fredoka',sans-serif; font-weight:500; font-size:24px; color:#fff; line-height:1.4; max-width:760px;">The scarce skill flipped. It's no longer <em style="color:var(--gold); font-style:normal;">writing</em> code — it's <em style="color:var(--gold); font-style:normal;">directing</em> AI to write good code. Nobody is teaching that as a daily habit yet.</p>
+  </div>
+</section>
+
+<!-- SOLUTION / CORE LOOP -->
+<section class="wrap" style="padding: 88px 40px 0;">
+  <div class="eyebrow" style="color: var(--violet);">The solution</div>
+  <h2 style="font-size:36px; margin-top:14px; max-width:640px; line-height:1.15;">Vibolingo borrows Duolingo's habit engine — and points it at a skill with a real payoff.</h2>
+  <p style="font-size:17px; line-height:1.7; color:var(--ink-soft); margin-top:18px; max-width:640px;">A skill path, bite-size lessons, streaks and leagues — the loop that made a daily habit out of language learning for hundreds of millions of people. Except every Vibolingo lesson ends with something Duolingo never gives you: a real, live, shipped piece of software.</p>
+
+  <div style="display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:20px; margin-top:44px;">
+    <div style="background:var(--surface); border-radius:24px; padding:26px; border:1px solid var(--line);">
+      <div style="width:48px; height:48px; border-radius:14px; background:var(--violet-pale); display:flex; align-items:center; justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="19" r="3" stroke="var(--violet)" stroke-width="2"/><circle cx="12" cy="5" r="3" stroke="var(--violet)" stroke-width="2"/><circle cx="18" cy="12" r="3" stroke="var(--violet)" stroke-width="2"/><path d="M6 16v-3a2 2 0 0 1 2-2h2M18 15v-1a2 2 0 0 0-2-2h-2" stroke="var(--violet)" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <h3 style="font-size:19px; margin-top:18px;">Skill Path</h3>
+      <p style="font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin-top:8px;">A winding map of units — Your First App, Prompting Like a Pro, Debug With AI, Ship It — unlocked one node at a time.</p>
+    </div>
+    <div style="background:var(--surface); border-radius:24px; padding:26px; border:1px solid var(--line);">
+      <div style="width:48px; height:48px; border-radius:14px; background:var(--coral-pale); display:flex; align-items:center; justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="8" height="14" rx="2" stroke="var(--coral-deep)" stroke-width="2"/><rect x="13" y="5" width="8" height="14" rx="2" stroke="var(--coral-deep)" stroke-width="2"/><path d="M6 9h2M6 12h2" stroke="var(--coral-deep)" stroke-width="2" stroke-linecap="round"/><path d="M15 15l2-6 2 6" stroke="var(--coral-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 style="font-size:19px; margin-top:18px;">The Lesson</h3>
+      <p style="font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin-top:8px;">Prompt an AI in a chat pane on the left, watch a real app render live on the right. Lose a heart when a prompt ships something broken.</p>
+    </div>
+    <div style="background:var(--surface); border-radius:24px; padding:26px; border:1px solid var(--line);">
+      <div style="width:48px; height:48px; border-radius:14px; background:var(--gold-pale); display:flex; align-items:center; justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z" stroke="var(--gold-deep)" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 12l1.8 1.8L15 10.2" stroke="var(--gold-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 style="font-size:19px; margin-top:18px;">Vibe Check</h3>
+      <p style="font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin-top:8px;">Spot-the-bug drills — a leaked key, an infinite loop, a confusing screen. Catch it before you'd ship it: the grammar drill of vibe coding.</p>
+    </div>
+    <div style="background:var(--surface); border-radius:24px; padding:26px; border:1px solid var(--line);">
+      <div style="width:48px; height:48px; border-radius:14px; background:var(--violet-pale); display:flex; align-items:center; justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3c3 3.5 5 6.6 5 9.5A5 5 0 0 1 7 12.5C7 9.6 9 6.5 12 3Z" stroke="var(--violet)" stroke-width="2" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 style="font-size:19px; margin-top:18px;">Streaks &amp; Leagues</h3>
+      <p style="font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin-top:8px;">A daily streak flame, weekly leagues, promotion and demotion. The addictive machinery — borrowed on purpose.</p>
+    </div>
+    <div style="background:var(--surface); border-radius:24px; padding:26px; border:1px solid var(--line);">
+      <div style="width:48px; height:48px; border-radius:14px; background:var(--coral-pale); display:flex; align-items:center; justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6" stroke="var(--coral-deep)" stroke-width="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6" stroke="var(--coral-deep)" stroke-width="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6" stroke="var(--coral-deep)" stroke-width="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6" stroke="var(--coral-deep)" stroke-width="2"/></svg>
+      </div>
+      <h3 style="font-size:19px; margin-top:18px;">Shipped Portfolio</h3>
+      <p style="font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin-top:8px;">Every lesson's output is a tiny real app, saved to your public profile. Your streak isn't a badge — it's a portfolio.</p>
+    </div>
+    <div style="border-radius:24px; padding:26px; background:var(--violet); display:flex; flex-direction:column; justify-content:center;">
+      <p style="font-family:'Fredoka',sans-serif; color:#fff; font-size:18px; line-height:1.4;">See the app screens on the canvas to the right →</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATION -->
+<section class="wrap" style="padding: 96px 40px 0;">
+  <div class="eyebrow" style="color: var(--violet);">Why this, why now</div>
+  <h2 style="font-size:36px; margin-top:14px; max-width:640px; line-height:1.15;">Not another course. Not another AI IDE.</h2>
+
+  <div style="display:flex; flex-direction:column; gap:14px; margin-top:36px;">
+    <div style="display:flex; gap:22px; align-items:flex-start; background:var(--surface); border-radius:20px; padding:24px 28px; border:1px solid var(--line);">
+      <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:15px; color:var(--violet); flex:0 0 130px;">vs. Duolingo</div>
+      <p style="font-size:15.5px; color:var(--ink-soft); line-height:1.6;">Same habit engine, a very different payoff — you walk away with real, deployed software, not just a badge.</p>
+    </div>
+    <div style="display:flex; gap:22px; align-items:flex-start; background:var(--surface); border-radius:20px; padding:24px 28px; border:1px solid var(--line);">
+      <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:15px; color:var(--violet); flex:0 0 130px;">vs. coding courses</div>
+      <p style="font-size:15.5px; color:var(--ink-soft); line-height:1.6;">Codecademy and freeCodeCamp teach syntax for a world where you type every line. We teach the 2026 skill — directing, reviewing, and shipping AI-written code.</p>
+    </div>
+    <div style="display:flex; gap:22px; align-items:flex-start; background:var(--surface); border-radius:20px; padding:24px 28px; border:1px solid var(--line);">
+      <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:15px; color:var(--violet); flex:0 0 130px;">vs. raw AI tools</div>
+      <p style="font-size:15.5px; color:var(--ink-soft); line-height:1.6;">Cursor, Replit, and Lovable are built for people who already know how to vibe code. Vibolingo is the on-ramp — training wheels before you graduate to the pro tools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS MODEL -->
+<section class="wrap" style="padding: 96px 40px 0;">
+  <div class="eyebrow" style="color: var(--violet);">Business model</div>
+  <h2 style="font-size:36px; margin-top:14px;">Free to start. Priced like a habit.</h2>
+
+  <div style="display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:20px; margin-top:36px; align-items:stretch;">
+    <div style="border-radius:24px; padding:28px; background:var(--surface); border:1px solid var(--line); display:flex; flex-direction:column;">
+      <h3 style="font-size:20px;">Free</h3>
+      <p style="font-size:14px; color:var(--ink-soft); margin-top:8px; line-height:1.6; flex:1;">5 hearts a day, the full skill path, community leagues. The whole habit loop, no card required.</p>
+      <div style="margin-top:16px; font-family:'Fredoka',sans-serif; font-size:15px; color:var(--ink-soft);">$0</div>
+    </div>
+    <div style="border-radius:24px; padding:28px; background:var(--violet); color:#fff; display:flex; flex-direction:column; position:relative;">
+      <span style="position:absolute; top:-12px; right:24px; background:var(--gold); color:#4A2E00; font-size:11px; font-weight:800; letter-spacing:0.06em; padding:5px 12px; border-radius:999px;">MOST LOVED</span>
+      <h3 style="font-size:20px; color:#fff;">Vibolingo Plus</h3>
+      <p style="font-size:14px; color:#E4D9FF; margin-top:8px; line-height:1.6; flex:1;">Unlimited hearts, offline lessons, and advanced tracks — mobile apps, backends, monetization.</p>
+      <div style="margin-top:16px; font-family:'Fredoka',sans-serif; font-size:15px; color:#E4D9FF;">Monthly subscription</div>
+    </div>
+    <div style="border-radius:24px; padding:28px; background:var(--surface); border:1px solid var(--line); display:flex; flex-direction:column;">
+      <h3 style="font-size:20px;">Vibolingo for Schools</h3>
+      <p style="font-size:14px; color:var(--ink-soft); margin-top:8px; line-height:1.6; flex:1;">Classroom licenses, teacher dashboards, cohort leaderboards — for bootcamps and CS101.</p>
+      <div style="margin-top:16px; font-family:'Fredoka',sans-serif; font-size:15px; color:var(--ink-soft);">Seat-based license</div>
+    </div>
+  </div>
+  <p style="font-size:14.5px; color:var(--ink-soft); margin-top:20px; max-width:620px; line-height:1.6;">Later: a talent marketplace built on shipped portfolios — every learner graduates with proof of work, not just a certificate.</p>
+</section>
+
+<!-- VISION / FOOTER -->
+<section style="margin-top:96px; background: var(--ink); padding: 64px 0 48px; position:relative; overflow:hidden;">
+  <div style="position:absolute; top:-60px; right:-40px; width:200px; height:200px; border-radius:50%; background:var(--violet); opacity:0.25;"></div>
+  <div class="wrap">
+    <p style="font-family:'Fredoka',sans-serif; font-weight:500; font-size:27px; color:#fff; line-height:1.4; max-width:680px;">We want "I built an app" to be as ordinary a sentence as "I speak a little Spanish." Five minutes a day. No gatekeeping. Just vibes — steered well.</p>
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:48px; padding-top:24px; border-top:1px solid #3A2E5C; flex-wrap:wrap; gap:16px;">
+      <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:18px; color:#fff;">Vibolingo</div>
+      <div style="font-size:13px; color:#9384B8;">Build real things, one lesson at a time.</div>
+    </div>
+  </div>
+</section>
+
+</x-dc>
+</body>
+</html>

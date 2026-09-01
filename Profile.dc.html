@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <style>
+    :root {
+      --bg: #FFF7ED; --surface: #FFFFFF; --ink: #241B3A; --ink-soft: #9186AC;
+      --violet: #7C4DFF; --violet-deep: #5A22D6; --violet-pale: #F1EAFF;
+      --coral: #FF5C7A; --coral-deep: #E23C5C; --coral-pale: #FFE4EA;
+      --gold: #FFB020; --gold-deep: #E08E00; --gold-pale: #FFF1D2;
+      --green: #2FBE84; --green-deep:#1E9C68; --green-pale: #DCF7EA; --line: #EDE4FF;
+      --sky: #3FB6E8; --sky-pale:#E1F4FC;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ink); }
+    .screen { width: 390px; height: 844px; background: var(--bg); border-radius: 40px; border: 1px solid rgba(36,27,58,0.08); overflow: hidden; position: relative; display: flex; flex-direction: column; }
+  </style>
+</helmet>
+
+<div class="screen">
+
+  <div style="flex:1; overflow:hidden; padding: 30px 24px 0; display:flex; flex-direction:column;">
+
+    <!-- header -->
+    <div style="display:flex; align-items:center; gap:16px;">
+      <svg width="64" height="64" viewBox="0 0 200 200" fill="none" style="flex:none;">
+        <path d="M100 22C48 22 26 66 26 108c0 50 34 76 74 76s74-26 74-76C174 66 152 22 100 22Z" fill="var(--violet)"/>
+        <circle cx="55" cy="146" r="10" fill="#C9A9FF"/><circle cx="145" cy="146" r="10" fill="#C9A9FF"/>
+        <path d="M38 96C38 48 162 48 162 96" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <rect x="21" y="86" width="28" height="42" rx="14" fill="var(--coral)"/><rect x="151" y="86" width="28" height="42" rx="14" fill="var(--coral)"/>
+        <ellipse cx="74" cy="112" rx="16" ry="20" fill="#fff"/><ellipse cx="126" cy="112" rx="16" ry="20" fill="#fff"/>
+        <circle cx="79" cy="108" r="6" fill="var(--ink)"/><circle cx="131" cy="108" r="6" fill="var(--ink)"/>
+      </svg>
+      <div>
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:21px;">Ren Okafor</div>
+        <div style="display:flex; align-items:center; gap:6px; margin-top:4px;">
+          <span style="background:var(--gold-pale); color:var(--gold-deep); font-size:11.5px; font-weight:800; padding:3px 10px; border-radius:999px;">LEVEL 12</span>
+          <span style="font-size:12.5px; color:var(--ink-soft); font-weight:600;">Joined Mar 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- stats -->
+    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:22px;">
+      <div style="background:var(--surface); border-radius:16px; padding:14px; text-align:center; border:1px solid var(--line);">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:20px; color:var(--gold-deep);">14</div>
+        <div style="font-size:11px; color:var(--ink-soft); font-weight:700; margin-top:2px;">DAY STREAK</div>
+      </div>
+      <div style="background:var(--surface); border-radius:16px; padding:14px; text-align:center; border:1px solid var(--line);">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:20px; color:var(--violet);">860</div>
+        <div style="font-size:11px; color:var(--ink-soft); font-weight:700; margin-top:2px;">TOTAL XP</div>
+      </div>
+      <div style="background:var(--surface); border-radius:16px; padding:14px; text-align:center; border:1px solid var(--line);">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:20px; color:var(--green-deep);">9</div>
+        <div style="font-size:11px; color:var(--ink-soft); font-weight:700; margin-top:2px;">APPS SHIPPED</div>
+      </div>
+    </div>
+
+    <!-- shipped apps -->
+    <div style="margin-top:26px;">
+      <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:16px;">Shipped apps</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:12px;">
+
+      <div style="background:var(--surface); border-radius:16px; padding:14px; border:1px solid var(--line);">
+        <div style="width:100%; height:60px; background:var(--violet-pale); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="var(--violet)" stroke-width="2"/><path d="M9 15V9l6 3-6 3Z" fill="var(--violet)"/></svg>
+        </div>
+        <div style="font-size:13px; font-weight:700; margin-top:10px;">Tip Calculator</div>
+        <div style="display:flex; align-items:center; gap:5px; margin-top:4px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span>
+          <span style="font-size:11px; color:var(--ink-soft); font-weight:600;">Live</span>
+        </div>
+      </div>
+
+      <div style="background:var(--surface); border-radius:16px; padding:14px; border:1px solid var(--line);">
+        <div style="width:100%; height:60px; background:var(--sky-pale); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="var(--sky)" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="var(--sky)" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="font-size:13px; font-weight:700; margin-top:10px;">Weather Widget</div>
+        <div style="display:flex; align-items:center; gap:5px; margin-top:4px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span>
+          <span style="font-size:11px; color:var(--ink-soft); font-weight:600;">Live</span>
+        </div>
+      </div>
+
+      <div style="background:var(--surface); border-radius:16px; padding:14px; border:1px solid var(--line);">
+        <div style="width:100%; height:60px; background:var(--coral-pale); border-radius:10px; display:flex; align-items:center; justify-content:center;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="var(--coral-deep)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="font-size:13px; font-weight:700; margin-top:10px;">Habit Tracker</div>
+        <div style="display:flex; align-items:center; gap:5px; margin-top:4px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:var(--green);"></span>
+          <span style="font-size:11px; color:var(--ink-soft); font-weight:600;">Live</span>
+        </div>
+      </div>
+
+      <div style="background:var(--surface); border-radius:16px; padding:14px; border:1.5px dashed var(--line); display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center; color:var(--ink-soft);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin:0 auto;"><path d="M12 5v14M5 12h14" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <div style="font-size:11.5px; font-weight:700; margin-top:6px;">Next lesson</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bottom nav -->
+  <div style="flex:none; display:flex; align-items:center; justify-content:space-around; padding: 12px 12px 20px; background:var(--surface); border-top:1px solid var(--line);">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9h14v-9" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z" stroke="var(--ink-soft)" stroke-width="2.2" stroke-linejoin="round"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 4h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5V4Z" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linejoin="round"/><path d="M7 5H4.5A2.5 2.5 0 0 0 7 9M17 5h2.5A2.5 2.5 0 0 1 17 9" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linecap="round"/><path d="M12 12v3.5M9.5 19.5h5M10 16.5h4v3h-4z" stroke="var(--ink-soft)" stroke-width="2.1" stroke-linejoin="round"/></svg>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="var(--violet)" stroke-width="2.2"/><path d="M4 20c1.5-4 5-6 8-6s6.5 2 8 6" stroke="var(--violet)" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <div style="width:5px; height:5px; border-radius:50%; background:var(--violet);"></div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

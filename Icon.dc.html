@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <style>
+    :root {
+      --bg: #FFF7ED; --ink: #241B3A; --ink-soft: #9186AC;
+      --violet: #7C4DFF; --violet-deep: #5A22D6; --violet-dark: #3E1C99;
+      --coral: #FF5C7A; --cream: #FFF7ED; --line: #EDE4FF;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ink); background: var(--bg); }
+  </style>
+</helmet>
+
+<div style="width: 680px; padding: 56px; display:flex; flex-direction:column; align-items:center; gap: 40px;">
+
+  <div style="align-self:flex-start;">
+    <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; color:var(--ink-soft);">APP ICON</div>
+    <div style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:22px; margin-top:4px;">Vibolingo</div>
+  </div>
+
+  <!-- big icon -->
+  <div style="width:280px; height:280px; border-radius:62px; overflow:hidden; position:relative; box-shadow: 0 18px 40px rgba(90,34,214,0.28);">
+    <svg width="280" height="280" viewBox="0 0 200 200" style="display:block;">
+      <defs>
+        <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="var(--violet)"/>
+          <stop offset="1" stop-color="var(--violet-deep)"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="200" height="200" fill="url(#bgGrad)"/>
+      <!-- headphone band -->
+      <path d="M28 92C28 34 172 34 172 92" stroke="var(--coral)" stroke-width="16" fill="none" stroke-linecap="round"/>
+      <!-- head, cropped at bottom by icon frame -->
+      <rect x="22" y="30" width="156" height="196" rx="78" fill="var(--cream)"/>
+      <!-- ear pads -->
+      <rect x="10" y="80" width="34" height="52" rx="17" fill="var(--coral)"/>
+      <rect x="156" y="80" width="34" height="52" rx="17" fill="var(--coral)"/>
+      <!-- eyes -->
+      <ellipse cx="76" cy="122" rx="17" ry="21" fill="var(--ink)"/>
+      <ellipse cx="124" cy="122" rx="17" ry="21" fill="var(--ink)"/>
+      <circle cx="81" cy="115" r="5.5" fill="#fff"/>
+      <circle cx="129" cy="115" r="5.5" fill="#fff"/>
+      <!-- smile -->
+      <path d="M82 156c7 8 29 8 36 0" stroke="var(--ink)" stroke-width="7" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- scale check -->
+  <div style="display:flex; align-items:flex-end; gap:28px;">
+    <div style="text-align:center;">
+      <div style="width:120px; height:120px; border-radius:27px; overflow:hidden; box-shadow: 0 8px 18px rgba(90,34,214,0.22);">
+        <svg width="120" height="120" viewBox="0 0 200 200" style="display:block;">
+          <rect x="0" y="0" width="200" height="200" fill="var(--violet)"/>
+          <path d="M28 92C28 34 172 34 172 92" stroke="var(--coral)" stroke-width="16" fill="none" stroke-linecap="round"/>
+          <rect x="22" y="30" width="156" height="196" rx="78" fill="var(--cream)"/>
+          <rect x="10" y="80" width="34" height="52" rx="17" fill="var(--coral)"/>
+          <rect x="156" y="80" width="34" height="52" rx="17" fill="var(--coral)"/>
+          <ellipse cx="76" cy="122" rx="17" ry="21" fill="var(--ink)"/>
+          <ellipse cx="124" cy="122" rx="17" ry="21" fill="var(--ink)"/>
+          <circle cx="81" cy="115" r="5.5" fill="#fff"/>
+          <circle cx="129" cy="115" r="5.5" fill="#fff"/>
+          <path d="M82 156c7 8 29 8 36 0" stroke="var(--ink)" stroke-width="7" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div style="font-size:11.5px; color:var(--ink-soft); font-weight:700; margin-top:8px;">home screen</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:64px; height:64px; border-radius:15px; overflow:hidden; box-shadow: 0 6px 14px rgba(90,34,214,0.2);">
+        <svg width="64" height="64" viewBox="0 0 200 200" style="display:block;">
+          <rect x="0" y="0" width="200" height="200" fill="var(--violet)"/>
+          <path d="M28 92C28 34 172 34 172 92" stroke="var(--coral)" stroke-width="16" fill="none" stroke-linecap="round"/>
+          <rect x="22" y="30" width="156" height="196" rx="78" fill="var(--cream)"/>
+          <rect x="10" y="80" width="34" height="52" rx="17" fill="var(--coral)"/>
+          <rect x="156" y="80" width="34" height="52" rx="17" fill="var(--coral)"/>
+          <ellipse cx="76" cy="122" rx="17" ry="21" fill="var(--ink)"/>
+          <ellipse cx="124" cy="122" rx="17" ry="21" fill="var(--ink)"/>
+          <circle cx="81" cy="115" r="5.5" fill="#fff"/>
+          <circle cx="129" cy="115" r="5.5" fill="#fff"/>
+          <path d="M82 156c7 8 29 8 36 0" stroke="var(--ink)" stroke-width="7" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div style="font-size:11.5px; color:var(--ink-soft); font-weight:700; margin-top:8px;">notification</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:36px; height:36px; border-radius:9px; overflow:hidden; box-shadow: 0 4px 10px rgba(90,34,214,0.18);">
+        <svg width="36" height="36" viewBox="0 0 200 200" style="display:block;">
+          <rect x="0" y="0" width="200" height="200" fill="var(--violet)"/>
+          <path d="M28 92C28 34 172 34 172 92" stroke="var(--coral)" stroke-width="16" fill="none" stroke-linecap="round"/>
+          <rect x="22" y="30" width="156" height="196" rx="78" fill="var(--cream)"/>
+          <rect x="10" y="80" width="34" height="52" rx="17" fill="var(--coral)"/>
+          <rect x="156" y="80" width="34" height="52" rx="17" fill="var(--coral)"/>
+          <ellipse cx="76" cy="122" rx="17" ry="21" fill="var(--ink)"/>
+          <ellipse cx="124" cy="122" rx="17" ry="21" fill="var(--ink)"/>
+          <circle cx="81" cy="115" r="5.5" fill="#fff"/>
+          <circle cx="129" cy="115" r="5.5" fill="#fff"/>
+          <path d="M82 156c7 8 29 8 36 0" stroke="var(--ink)" stroke-width="7" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div style="font-size:11.5px; color:var(--ink-soft); font-weight:700; margin-top:8px;">tab bar</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
