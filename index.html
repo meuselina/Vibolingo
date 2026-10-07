@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vibolingo · Duolingo for vibe coding</title>
+<meta name="description" content="Concept prototype: five minute daily lessons that teach people how to direct AI to build real, working apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap">
+<style>
+  :root {
+    --bg: #FFF7ED; --surface: #FFFFFF; --ink: #241B3A; --ink-soft: #7A7093;
+    --violet: #7C4DFF; --violet-deep: #5A22D6; --line: #EBE2FF;
+    --gold: #FFB020; --gold-deep: #E08E00;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Plus Jakarta Sans", system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+  header { background: var(--violet); color: #fff; padding: 56px 20px 64px; text-align: center; }
+  h1 { font-family: "Fredoka", sans-serif; font-size: clamp(40px, 8vw, 64px); margin: 0 0 8px; }
+  header p { margin: 0 auto; max-width: 560px; font-size: 18px; opacity: .92; }
+  .cta { display: inline-block; margin-top: 24px; background: var(--gold); color: #4A2E00; font-weight: 700; text-decoration: none; padding: 14px 26px; border-radius: 16px; box-shadow: 0 5px 0 var(--gold-deep); }
+  main { max-width: 980px; margin: -32px auto 48px; padding: 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+  a.card { display: block; background: var(--surface); border: 2px solid var(--line); border-radius: 20px; padding: 20px; color: inherit; text-decoration: none; box-shadow: 0 4px 0 var(--line); transition: transform .15s; }
+  a.card:hover { transform: translateY(-3px); border-color: var(--violet); }
+  .card h2 { font-family: "Fredoka", sans-serif; font-size: 22px; margin: 0 0 6px; color: var(--violet-deep); }
+  .card p { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
+  footer { text-align: center; color: var(--ink-soft); font-size: 13px; padding: 0 16px 40px; }
+  footer a { color: var(--violet-deep); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Vibolingo</h1>
+  <p>Duolingo for the way software gets built now. Five minutes a day. Real, working apps. No CS degree required.</p>
+  <a class="cta" href="Demo.dc.html">Try the clickable demo</a>
+</header>
+<main>
+  <div class="grid">
+    <a class="card" href="Main.dc.html"><h2>Pitch</h2><p>The problem, the idea and who it is for.</p></a>
+    <a class="card" href="Demo.dc.html"><h2>Demo</h2><p>Click through a full lesson from start to finish.</p></a>
+    <a class="card" href="Home.dc.html"><h2>Learning path</h2><p>Units like "Prompting Like a Pro" with streaks, gems and hearts.</p></a>
+    <a class="card" href="Lesson.dc.html"><h2>Lesson</h2><p>Change a live tip calculator by telling the AI what to do.</p></a>
+    <a class="card" href="VibeCheck.dc.html"><h2>Vibe Check</h2><p>"Would you ship this?" Spot problems in AI generated code.</p></a>
+    <a class="card" href="Streak.dc.html"><h2>Streak &amp; league</h2><p>Weekly league to keep the habit going.</p></a>
+    <a class="card" href="Profile.dc.html"><h2>Profile</h2><p>Level, XP and every app you shipped.</p></a>
+    <a class="card" href="Icon.dc.html"><h2>App icon</h2><p>Icon on the home screen, in notifications and the tab bar.</p></a>
+  </div>
+</main>
+<footer>Concept prototype by <a href="https://github.com/meuselina">Selina Meusel</a>. Not a live product.</footer>
+</body>
+</html>

@@ -3,7 +3,9 @@
 **Duolingo for the way software gets built now.**
 Five minutes a day. Real, working apps. No CS degree required.
 
-> Concept prototype, not a live product.
+**[Live demo](https://meuselina.github.io/Vibolingo/)** · concept prototype, not a live product.
+
+![Vibolingo screens](screenshots.jpg)
 
 ## The problem
 
@@ -26,10 +28,17 @@ Vibolingo teaches people to *direct* AI the way Duolingo teaches a language: sho
 | `Profile.dc.html` | Profile with shipped apps |
 | `Icon.dc.html` | App icon |
 | `Demo.dc.html` | Clickable demo |
+| `index.html` | Start page linking all screens |
 
-## Run
+## Run locally
 
-Open any `.dc.html` file in the browser. `support.js` must be in the same folder.
+The screens load their components at runtime, so they need a small web server (opening the files directly does not work):
+
+```bash
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000 for the overview of all screens.
 
 ## Built with
 
