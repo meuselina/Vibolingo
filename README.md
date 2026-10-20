@@ -3,7 +3,7 @@
 **Duolingo for the way software gets built now.**
 Five minutes a day. Real, working apps. No CS degree required.
 
-🏆 **2nd place at a hackathon.**
+🏆 **2nd place at the CODE Hackathon.**
 
 **[Live demo](https://meuselina.github.io/Vibolingo/)** · concept prototype, not a live product.
 
