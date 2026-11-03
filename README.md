@@ -6,7 +6,8 @@
 Five minutes a day. Real, working apps. No CS degree required.
 
 <img src="media/badge-hackathon.png" height="40" alt="2nd place at the CODE Hackathon" />&nbsp;
-<a href="https://meuselina.github.io/Vibolingo/"><img src="media/button-live-demo.png" height="40" alt="Try the live demo" /></a>
+<a href="https://meuselina.github.io/Vibolingo/"><img src="media/button-live-demo.png" height="40" alt="Try the live demo" /></a>&nbsp;
+<img src="media/badge-javascript.png" height="40" alt="Built with JavaScript" />
 
 <sub>Concept prototype, not a live product</sub>
 
