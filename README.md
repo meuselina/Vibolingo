@@ -5,12 +5,10 @@
 **Duolingo for the way software gets built now.**
 Five minutes a day. Real, working apps. No CS degree required.
 
-![2nd place](https://img.shields.io/badge/%F0%9F%8F%86%202nd%20place-CODE%20Hackathon-f59e0b?style=for-the-badge)
-![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-663399?style=for-the-badge&logo=css&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+<img src="media/badge-hackathon.png" height="40" alt="2nd place at the CODE Hackathon" />&nbsp;
+<a href="https://meuselina.github.io/Vibolingo/"><img src="media/button-live-demo.png" height="40" alt="Try the live demo" /></a>
 
-**[Try the live demo](https://meuselina.github.io/Vibolingo/)** · concept prototype, not a live product
+<sub>Concept prototype, not a live product</sub>
 
 <img src="media/lesson-demo.gif" width="300" alt="Clicking through a full Vibolingo lesson" />
 
